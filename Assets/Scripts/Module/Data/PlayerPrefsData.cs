@@ -36,7 +36,7 @@ namespace Module.Data
             Type type = typeof(T);
             if (mDataGetter.TryGetValue(type, out var func))
             {
-                return (T)TypeDescriptor.GetConverter(type).ConvertTo(func(key),type);
+                return (T)GameUtils.Instance.TypeConverter(type).ConvertTo(func(key),type);
             }
             Debug.LogError($"当前{type.Name}类型数据不存在");
             return default;

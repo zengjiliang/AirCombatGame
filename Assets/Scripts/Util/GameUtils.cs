@@ -6,7 +6,9 @@
 // 创建时间:2024年1月31日 0:56
 #endregion
 
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using View.Data;
 
@@ -19,6 +21,9 @@ namespace Util
             return path.Replace("/", ".");
         }
 
-    
+        public TypeConverter TypeConverter(Type type)
+        {
+            return TypeDescriptor.GetConverter(type);
+        }
     }
 }

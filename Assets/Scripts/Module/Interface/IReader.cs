@@ -6,16 +6,16 @@
 // 创建时间:2024年1月31日 23:33
 #endregion
 
+using System;
+
 namespace Module.Interface
 {
     public interface IReader
     {
-        // public string this[string key]
-        // {
-        //     get
-        //     {
-        //         return string.Empty;
-        //     };
-        // } 
+        IReader this[string key] { get; }
+        IReader this[int key] { get; }
+
+        void Get<T>(Action<T> callBack);
+        void SetData(object data);
     }
 }
