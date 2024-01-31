@@ -74,8 +74,8 @@ namespace Module.Reader
             {
                 Debug.LogError(str);
                 mJsonData =  JsonMapper.ToObject(str);
-                ExecuteKeysQueue();
                 ResetData();
+                ExecuteKeysQueue();
             }
             else
             {
@@ -108,8 +108,9 @@ namespace Module.Reader
                     {
                         Debug.LogError("当前键值类型错误❌");
                     }
-                    keyQueue.Complete(mCacheData);
+                   
                 }
+                keyQueue.Complete(mCacheData);
             }
         }
         private T GetValue<T>(JsonData data)
