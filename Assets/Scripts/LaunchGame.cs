@@ -23,9 +23,14 @@ public class LaunchGame : MonoBehaviour
 
         UIManager.Instance.Show(GamePaths.START_VIEW);
         //LoadManager.Instance.LoadPrefab("View/Login/StartView", transform);
-        JsonReader read = new JsonReader();
-        read["planes"][0]["fireRate"].Get<float>((val)=>Debug.Log(val));
-        read.SetData(cJson);
+        // JsonReader read = new JsonReader();
+        // read["planes"][0]["fireRate"].Get<float>((val)=>Debug.Log(val));
+        // read.SetData(cJson);
+        var reader = ReaderManager.Instance.GetReader(GamePaths.INIT_PLANE_CONFIG);
+        //reader["planes"][0]["planeId"].Get<int>(value=>Debug.Log(value));
+        reader["planes"][1]["planeId"].Get<int>(value=>Debug.Log(value));
+        //reader["planes"][2]["planeId"].Get<int>(value=>Debug.Log(value));
+        //reader.Get();
     }
 
 

@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using Config;
 using Module.Interface;
+using UnityEngine;
 using Util;
 
 namespace Manager
@@ -27,6 +28,11 @@ namespace Manager
             {
                 //从当前的配置总,获取一个新的reader
                 reader = ReaderConfig.Instance.GetReader(path);
+                LoadManager.Instance.LoadConfig(path, (data) =>
+                {
+                    Debug.Log(data);
+                    reader.SetData(data);
+                });
                 if (reader != null)
                 {
                     mReaderDic[path] = reader;

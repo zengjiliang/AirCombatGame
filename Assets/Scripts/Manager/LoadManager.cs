@@ -14,7 +14,7 @@ using Util;
 
 namespace Manager
 {
-    public class LoadManager:Singleton<LoadManager>
+    public class LoadManager:Singleton<LoadManager>,ILoader
     {
         private ILoader mLoader;
 
@@ -26,6 +26,11 @@ namespace Manager
         public GameObject LoadPrefab(string path, Transform parent = null)
         {
             return mLoader.LoadPrefab(path, parent);
+        }
+
+        public void LoadConfig(string path, Action<object> complete)
+        {
+            mLoader.LoadConfig(path,complete);
         }
     }
 }

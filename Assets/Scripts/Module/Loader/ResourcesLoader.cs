@@ -7,8 +7,11 @@
 #endregion
 
 using System;
+using System.Collections;
+using Manager;
 using Module.Interface;
 using UnityEngine;
+using UnityEngine.Networking;
 using Util;
 
 namespace Module.Loader
@@ -23,6 +26,31 @@ namespace Module.Loader
    
             //obj.AddComponent(Type.GetType(GameUtils.Path2Namespace(path)));
             return obj;
+        }
+
+        public void LoadConfig(string path, Action<object> complete)
+        {
+            CoroutineManager.Instance.DoExecute(Config(path, complete));
+        }
+
+        private IEnumerator Config(string path, Action<object> complete)
+        {
+            UnityWebRequest unityWebRequest = new UnityWebRequest(new Uri(path));
+            Debug.Log(new Uri(path));
+            unityWebRequest.downloadHandler = new DownloadHandlerBuffer();
+            yield return unityWebRequest.SendWebRequest();
+            if (unityWebRequest.isDone)
+            {
+                if (unityWebRequest.result == UnityWebRequest.Result.Success)
+                {
+                    complete.Invoke(unityWebRequest.downloadHandler.text);
+                }
+                else
+                {
+                    Debug.LogError(unityWebRequest.error);
+                }
+            }
+            yield return null;
         }
     }
 }

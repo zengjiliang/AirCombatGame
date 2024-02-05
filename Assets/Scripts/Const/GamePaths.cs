@@ -6,11 +6,16 @@
 // 创建时间:2024年1月31日 3:52
 #endregion
 
+using UnityEngine;
+
 namespace Const
 {
     public class GamePaths
     {
         public const string START_VIEW = "View/Login/StartView";
         public const string SELECT_HERO_VIEW = "View/Login/SelectHeroView";
+
+        private static readonly string CONFIG_FOLDER = $"{Application.streamingAssetsPath}/Config";
+        public static readonly string INIT_PLANE_CONFIG = $"{CONFIG_FOLDER}/InitPlane.json";
     }
 }

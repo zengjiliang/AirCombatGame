@@ -6,6 +6,7 @@
 // 创建时间:2024年1月31日 0:12
 #endregion
 
+using System;
 using UnityEngine;
 
 namespace Module.Interface
@@ -13,6 +14,6 @@ namespace Module.Interface
     public interface ILoader
     {
         GameObject LoadPrefab(string path, Transform parent = null);
-        
+        void LoadConfig(string path, Action<object> complete);
     }
 }
