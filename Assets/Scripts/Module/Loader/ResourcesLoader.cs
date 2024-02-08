@@ -36,7 +36,6 @@ namespace Module.Loader
         private IEnumerator Config(string path, Action<object> complete)
         {
             UnityWebRequest unityWebRequest = new UnityWebRequest(new Uri(path));
-            Debug.Log(new Uri(path));
             unityWebRequest.downloadHandler = new DownloadHandlerBuffer();
             yield return unityWebRequest.SendWebRequest();
             if (unityWebRequest.isDone)
