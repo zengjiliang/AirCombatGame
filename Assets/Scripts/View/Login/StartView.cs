@@ -17,14 +17,14 @@ namespace View.Login
     [BindPrefab(GamePaths.START_VIEW)]
     public class StartView:ViewBase
     {
-        public override void Init()
+        protected override void InitChild()
         {
-            base.Init();
             Util.GetData("StartBtn").AddListener(() =>
             {
                 Debug.Log("click");
                 UIManager.Instance.Show(GamePaths.SELECT_HERO_VIEW);
             });
         }
+
     }
 }

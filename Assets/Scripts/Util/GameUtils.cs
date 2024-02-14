@@ -25,5 +25,15 @@ namespace Util
         {
             return TypeDescriptor.GetConverter(type);
         }
+
+        public bool String2Int(string str, out int value)
+        {
+            return int.TryParse(str, out  value);
+        }
+
+        public string[] Split(string strs,char separator)
+        {
+            return strs.Split(separator);
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 using Attribute;
 using Const;
+using Manager;
 using UnityEngine;
 using View.Base;
 
@@ -16,9 +17,8 @@ namespace View.Login
     [BindPrefab(GamePaths.SELECT_HERO_VIEW)]
     public class SelectHeroView:ViewBase
     {
-        public override void Init()
+        protected override void InitChild()
         {
-            base.Init();
             Util.GetData("Heros").GameObject.AddComponent<SelectHero>();
             Util.GetData("StartGame").AddListener(() =>
             {
@@ -34,7 +34,10 @@ namespace View.Login
             {
                 //TODO:Strengthen
                 Debug.Log("Strengthen");
+                UIManager.Instance.Show(GamePaths.STRENGTHEN_VIEW);
             });
         }
+
+   
     }
 }

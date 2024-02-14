@@ -13,6 +13,7 @@ using Module.Interface;
 using UnityEngine;
 using UnityEngine.Networking;
 using Util;
+using Object = UnityEngine.Object;
 
 namespace Module.Loader
 {
@@ -20,7 +21,7 @@ namespace Module.Loader
     {
         public GameObject LoadPrefab(string path, Transform parent = null)
         {
-            GameObject prefab = Resources.Load<GameObject>(path);
+            GameObject prefab = Load<GameObject>(path);
             GameObject obj = GameObject.Instantiate(prefab, parent);
             obj.name = prefab.name;
    
@@ -28,6 +29,39 @@ namespace Module.Loader
             return obj;
         }
 
+        public Sprite LoadSprite(string path)
+        {
+            Sprite sprite = Load<Sprite>(path);
+            if (sprite == null)
+            {
+                Debug.LogError($"未找到对应图片,路径:{path}");
+                return null;
+            }
+            
+            return sprite;
+        }
+
+        public Sprite[] LoadSprites(string path)
+        {
+            Sprite[] sprites = LoadAll<Sprite>(path);
+            if (sprites == null || sprites.Length.Equals(0) == true)
+            {
+                Debug.LogError($"未找到对应图片,路径:{path}");
+                return null;
+            }
+            
+            return sprites;
+        }
+
+   
+        public T Load<T>(string path)where T : Object
+        {
+            return Resources.Load<T>(path);
+        }
+        public T[] LoadAll<T>(string path)where T : Object
+        {
+            return Resources.LoadAll<T>(path);
+        }
         public void LoadConfig(string path, Action<object> complete)
         {
             CoroutineManager.Instance.DoExecute(Config(path, complete));

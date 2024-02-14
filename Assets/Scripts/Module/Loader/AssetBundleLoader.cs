@@ -9,6 +9,7 @@
 using System;
 using Module.Interface;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Module.Loader
 {
@@ -23,6 +24,26 @@ namespace Module.Loader
         public void LoadConfig(string path, Action<object> complete)
         {
             //throw new NotImplementedException();
+        }
+
+        public T Load<T>(string path) where T : Object
+        {
+            throw new NotImplementedException();
+        }
+
+        public T[] LoadAll<T>(string path) where T : Object
+        {
+            throw new NotImplementedException();
+        }
+
+        public Sprite LoadSprite(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Sprite[] LoadSprites(string path)
+        {
+            throw new NotImplementedException();
         }
     }
 }

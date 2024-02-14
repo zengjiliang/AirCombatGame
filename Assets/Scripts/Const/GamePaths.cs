@@ -14,6 +14,9 @@ namespace Const
     {
         public const string START_VIEW = "View/Login/StartView";
         public const string SELECT_HERO_VIEW = "View/Login/SelectHeroView";
+        public const string STRENGTHEN_VIEW = "View/StrengthenView";
+        
+        public const string PLAYER_PICTURE_FOLDER = "Picture/Player";
 
         private static readonly string CONFIG_FOLDER = $"{Application.streamingAssetsPath}/Config";
         public static readonly string INIT_PLANE_CONFIG = $"{CONFIG_FOLDER}/InitPlane.json";

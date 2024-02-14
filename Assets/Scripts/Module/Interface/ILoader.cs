@@ -9,11 +9,16 @@
 using System;
 using UnityEngine;
 
+using Object = UnityEngine.Object;
 namespace Module.Interface
 {
     public interface ILoader
     {
         GameObject LoadPrefab(string path, Transform parent = null);
         void LoadConfig(string path, Action<object> complete);
+        T Load<T>(string path) where T : Object;
+        T[] LoadAll<T>(string path) where T : Object;
+        Sprite LoadSprite(string path);
+        Sprite[] LoadSprites(string path);
     }
 }

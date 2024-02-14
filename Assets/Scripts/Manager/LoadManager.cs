@@ -11,6 +11,7 @@ using Module.Interface;
 using Module.Loader;
 using UnityEngine;
 using Util;
+using Object = UnityEngine.Object;
 
 namespace Manager
 {
@@ -31,6 +32,26 @@ namespace Manager
         public void LoadConfig(string path, Action<object> complete)
         {
             mLoader.LoadConfig(path,complete);
+        }
+
+        public T Load<T>(string path) where T : Object
+        {
+           return mLoader.Load<T>(path);
+        }
+        
+        public T[] LoadAll<T>(string path) where T : Object
+        {
+            return mLoader.LoadAll<T>(path);
+        }
+
+        public Sprite LoadSprite(string path)
+        {
+            return mLoader.LoadSprite(path);
+        }
+
+        public Sprite[] LoadSprites(string path)
+        {
+            return mLoader.LoadSprites(path);
         }
     }
 }

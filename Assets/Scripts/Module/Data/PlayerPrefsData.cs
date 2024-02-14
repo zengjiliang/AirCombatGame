@@ -20,8 +20,8 @@ namespace Module.Data
         private readonly Dictionary<Type, Func<string, object>> mDataGetter =
             new Dictionary<Type, Func<string, object>>()
             {
-                {typeof(int),key=>PlayerPrefs.GetInt(key,-1)},
-                {typeof(float),key=>PlayerPrefs.GetFloat(key,-1.0f)},
+                {typeof(int),key=>PlayerPrefs.GetInt(key,0)},
+                {typeof(float),key=>PlayerPrefs.GetFloat(key,0)},
                 {typeof(string),key=>PlayerPrefs.GetString(key,String.Empty)},
             };
         private readonly Dictionary<Type, Action<string, object>> mDataSetter =
